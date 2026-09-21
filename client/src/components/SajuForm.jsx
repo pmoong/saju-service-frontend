@@ -36,12 +36,12 @@ function SajuForm() {
     setResult(null);
 
     try {
-      // VITE_SERVER_ADDRESS 환경변수 사용
-      const serverAddress = process.env.VITE_SERVER_ADDRESS;
+      // REACT_APP_SERVER_ADDRESS 환경변수 사용
+      const serverAddress = import.meta.env.VITE_SERVER_ADDRESS;
 
       if (!serverAddress) {
         throw new Error(
-          "VITE_SERVER_ADDRESS 환경변수가 설정되지 않았습니다."
+          "REACT_APP_SERVER_ADDRESS 환경변수가 설정되지 않았습니다."
         );
       }
 
