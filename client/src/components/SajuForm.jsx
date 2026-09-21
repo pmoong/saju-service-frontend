@@ -36,7 +36,21 @@ function SajuForm() {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/saju", {
+      // REACT_APP_SERVER_ADDRESS 환경변수 사용
+      const serverAddress = process.env.REACT_APP_SERVER_ADDRESS;
+
+      if (!serverAddress) {
+        throw new Error(
+          "REACT_APP_SERVER_ADDRESS 환경변수가 설정되지 않았습니다."
+        );
+      }
+
+      // 환경변수 끝에 /가 있어도 중복되지 않도록 처리
+      const apiUrl = `${serverAddress.replace(/\/$/, "")}/api/saju`;
+
+      console.log("API 요청 주소:", apiUrl);
+
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,13 +83,11 @@ function SajuForm() {
 
   return (
     <div className="saju-container">
-      {/* 헤더 */}
       <div className="saju-header">
         <h1>오늘의 사주</h1>
         <p>나의 사주와 오늘의 운세를 확인해보세요.</p>
       </div>
 
-      {/* 입력 폼 */}
       <form className="saju-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">이름</label>
@@ -272,12 +284,8 @@ function SajuForm() {
         </p>
       </form>
 
-      {/* =========================
-          분석 결과
-      ========================== */}
       {result && (
         <div className="saju-result">
-          {/* 결과 헤더 */}
           <div className="result-header">
             <span className="result-label">SAJU ANALYSIS</span>
 
@@ -292,7 +300,6 @@ function SajuForm() {
             </p>
           </div>
 
-          {/* 사주 4주 */}
           <section className="result-card">
             <div className="section-title">
               <span>01</span>
@@ -310,7 +317,9 @@ function SajuForm() {
                 ["시주", result.saju?.pillars?.hour],
               ].map(([title, pillar]) => (
                 <div
-                  className={`pillar ${title === "일주" ? "pillar-main" : ""}`}
+                  className={`pillar ${
+                    title === "일주" ? "pillar-main" : ""
+                  }`}
                   key={title}
                 >
                   <span className="pillar-title">{title}</span>
@@ -323,7 +332,6 @@ function SajuForm() {
             </div>
           </section>
 
-          {/* 오행 */}
           <section className="result-card">
             <div className="section-title">
               <span>02</span>
@@ -353,7 +361,6 @@ function SajuForm() {
             </div>
           </section>
 
-          {/* 십신 */}
           <section className="result-card">
             <div className="section-title">
               <span>03</span>
@@ -383,7 +390,6 @@ function SajuForm() {
             </div>
           </section>
 
-          {/* 대운 */}
           <section className="result-card">
             <div className="section-title">
               <span>04</span>
@@ -411,7 +417,6 @@ function SajuForm() {
             </div>
           </section>
 
-          {/* 사주 해석 */}
           <section className="result-card interpretation-card">
             <div className="section-title">
               <span>05</span>
@@ -459,7 +464,6 @@ function SajuForm() {
             </div>
           </section>
 
-          {/* 오늘의 운세 */}
           <section className="today-card">
             <div className="today-header">
               <span className="today-label">TODAY'S FORTUNE</span>
