@@ -1,0 +1,885 @@
+{
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Noto Sans KR",
+sans-serif;
+
+background: #f7f3ed;
+color: #2d2926;
+}
+
+button,
+input,
+select {
+font: inherit;
+}
+
+.app {
+min-height: 100vh;
+padding: 50px 20px;
+}
+
+.saju-container {
+width: 100%;
+max-width: 760px;
+margin: 0 auto;
+}
+
+/* =========================
+헤더
+========================= */
+
+.saju-header {
+text-align: center;
+margin-bottom: 35px;
+}
+
+.saju-header h1 {
+margin: 0 0 10px;
+font-size: 36px;
+font-weight: 700;
+color: #392d27;
+}
+
+.saju-header p {
+margin: 0;
+color: #7b7069;
+font-size: 15px;
+}
+
+/* =========================
+입력 폼
+========================= */
+
+.saju-form {
+background: white;
+border-radius: 20px;
+padding: 35px;
+box-shadow: 0 10px 40px rgba(70, 50, 40, 0.08);
+}
+
+.form-group {
+margin-bottom: 25px;
+}
+
+.form-group > label:first-child {
+display: block;
+margin-bottom: 9px;
+font-size: 14px;
+font-weight: 600;
+color: #514741;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+width: 100%;
+height: 48px;
+padding: 0 14px;
+
+border: 1px solid #ded7d1;
+border-radius: 10px;
+
+background: white;
+color: #332d29;
+
+outline: none;
+transition:
+border-color 0.2s,
+box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+border-color: #8c6f5c;
+box-shadow: 0 0 0 3px rgba(140, 111, 92, 0.08);
+}
+
+.radio-group {
+display: flex;
+gap: 10px;
+}
+
+.radio-label {
+flex: 1;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+height: 48px;
+
+border: 1px solid #ded7d1;
+border-radius: 10px;
+
+cursor: pointer;
+color: #514741;
+
+transition:
+border-color 0.2s,
+background 0.2s;
+}
+
+.radio-label:has(input:checked) {
+border-color: #765846;
+background: #f7f1ec;
+color: #5c4030;
+font-weight: 600;
+}
+
+.radio-label input {
+display: none;
+}
+
+.time-input-group {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.time-input-group input {
+width: 100px;
+}
+
+.time-input-group span {
+color: #665b54;
+}
+
+.checkbox-label {
+display: flex;
+align-items: center;
+gap: 8px;
+
+margin-top: 12px;
+
+font-size: 14px;
+color: #716761;
+
+cursor: pointer;
+}
+
+.checkbox-label input {
+width: 16px;
+height: 16px;
+}
+
+.optional {
+font-size: 12px;
+font-weight: 400;
+color: #99908a;
+}
+
+.submit-button {
+width: 100%;
+height: 54px;
+
+margin-top: 10px;
+
+border: 0;
+border-radius: 12px;
+
+background: #594438;
+color: white;
+
+font-size: 16px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition:
+background 0.2s,
+transform 0.1s;
+}
+
+.submit-button:hover {
+background: #453329;
+}
+
+.submit-button:active {
+transform: scale(0.99);
+}
+
+.submit-button:disabled {
+background: #a99b92;
+cursor: wait;
+}
+
+.privacy-notice {
+margin: 18px 0 0;
+
+text-align: center;
+
+font-size: 12px;
+line-height: 1.6;
+
+color: #9a918b;
+}
+
+/* =========================
+분석 결과 전체
+========================= */
+
+.saju-result {
+margin-top: 30px;
+padding: 35px;
+
+background: white;
+border-radius: 20px;
+
+box-shadow: 0 10px 40px rgba(70, 50, 40, 0.08);
+}
+
+.saju-result > h2 {
+margin: 0 0 28px;
+
+color: #392d27;
+font-size: 25px;
+text-align: center;
+}
+
+.saju-result section {
+margin-bottom: 30px;
+}
+
+.saju-result h3 {
+margin: 0 0 15px;
+
+color: #4a392f;
+font-size: 18px;
+}
+
+.saju-result h4 {
+margin: 0 0 8px;
+
+color: #594438;
+font-size: 15px;
+}
+
+.saju-result p {
+margin: 0;
+
+color: #655b55;
+font-size: 14px;
+line-height: 1.8;
+}
+
+/* =========================
+사주 원국
+========================= */
+
+.pillars {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 10px;
+}
+
+.pillar {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+padding: 18px 10px;
+
+border: 1px solid #e4ddd7;
+border-radius: 14px;
+
+background: #fcfaf8;
+}
+
+.pillar-title {
+margin-bottom: 8px;
+
+color: #8b7d74;
+font-size: 12px;
+}
+
+.pillar strong {
+color: #4d382c;
+font-size: 24px;
+letter-spacing: 2px;
+}
+
+/* =========================
+오행 / 십신
+========================= */
+
+.elements,
+.ten-gods {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 10px;
+}
+
+.elements > div,
+.ten-gods > div {
+padding: 15px 10px;
+
+border-radius: 12px;
+
+background: #f8f5f1;
+
+text-align: center;
+}
+
+.elements span,
+.ten-gods span {
+display: block;
+
+margin-bottom: 6px;
+
+color: #8b7d74;
+font-size: 12px;
+}
+
+.elements strong,
+.ten-gods strong {
+display: block;
+
+color: #594438;
+font-size: 14px;
+}
+
+/* =========================
+대운
+========================= */
+
+.luck-pillars {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 8px;
+}
+
+.luck-pillar {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+padding: 13px 6px;
+
+border: 1px solid #e4ddd7;
+border-radius: 12px;
+
+background: #fcfaf8;
+}
+
+.luck-pillar span {
+margin-bottom: 5px;
+
+color: #91857d;
+font-size: 11px;
+}
+
+.luck-pillar strong {
+color: #594438;
+font-size: 15px;
+}
+
+/* =========================
+구분선
+========================= */
+
+.saju-result hr {
+margin: 35px 0;
+
+border: 0;
+border-top: 1px solid #eee7e1;
+}
+
+/* =========================
+해석
+========================= */
+
+.interpretation-section {
+margin-bottom: 24px;
+
+padding: 20px;
+
+border-radius: 14px;
+
+background: #faf8f5;
+}
+
+.interpretation-section:last-child {
+margin-bottom: 0;
+}
+
+.interpretation-section p {
+color: #5f5650;
+}
+
+/* =========================
+오늘의 운세
+========================= */
+
+.today-date {
+display: block;
+
+margin-top: 6px;
+
+color: #9a8a80;
+font-size: 13px;
+font-weight: 400;
+}
+
+/* =========================
+모바일
+========================= */
+
+@media (max-width: 600px) {
+.app {
+padding: 25px 15px;
+}
+
+.saju-header h1 {
+font-size: 30px;
+}
+
+.saju-form,
+.saju-result {
+padding: 25px 20px;
+border-radius: 16px;
+}
+
+.pillars {
+gap: 6px;
+}
+
+.pillar {
+padding: 14px 5px;
+}
+
+.pillar strong {
+font-size: 20px;
+}
+
+.elements,
+.ten-gods {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.luck-pillars {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.luck-pillar {
+padding: 14px 8px;
+}
+}
+/* =========================
+   사주 분석 결과
+========================= */
+
+.saju-result {
+  margin-top: 35px;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result-label,
+.today-label {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #9a7a63;
+}
+
+.result-header h2 {
+  margin: 0;
+
+  font-size: 28px;
+  color: #392d27;
+}
+
+.result-header p {
+  margin: 9px 0 0;
+
+  font-size: 13px;
+  color: #8b817a;
+}
+
+/* 결과 카드 */
+
+.result-card {
+  margin-bottom: 18px;
+  padding: 26px;
+
+  background: #fff;
+
+  border: 1px solid #ebe4de;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 30px rgba(70, 50, 40, 0.05);
+}
+
+.section-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-bottom: 22px;
+}
+
+.section-title > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f1e8e0;
+  color: #795b49;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.section-title h3 {
+  margin: 0 0 4px;
+
+  font-size: 18px;
+  color: #3c302a;
+}
+
+.section-title p {
+  margin: 0;
+
+  font-size: 12px;
+  color: #968c85;
+}
+
+/* 사주 4주 */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.pillar {
+  min-height: 125px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e8e0da;
+  border-radius: 13px;
+
+  background: #fcfaf8;
+}
+
+.pillar-title {
+  margin-bottom: 12px;
+
+  font-size: 12px;
+  color: #91857d;
+}
+
+.pillar strong {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #4b372d;
+}
+
+.pillar-main {
+  background: #f5ede6;
+  border-color: #d7c2b1;
+}
+
+.pillar-main strong {
+  color: #76523d;
+}
+
+.pillar small {
+  margin-top: 9px;
+
+  font-size: 10px;
+  color: #a48b79;
+}
+
+/* 오행 / 십신 */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+
+  border-radius: 10px;
+  background: #faf8f6;
+}
+
+.info-item span {
+  font-size: 12px;
+  color: #8f847d;
+}
+
+.info-item strong {
+  font-size: 14px;
+  color: #4b3b32;
+}
+
+/* 대운 */
+
+.luck-pillars {
+  display: flex;
+  gap: 8px;
+
+  overflow-x: auto;
+
+  padding-bottom: 5px;
+}
+
+.luck-pillar {
+  min-width: 65px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  padding: 12px 8px;
+
+  border: 1px solid #e7dfd9;
+  border-radius: 10px;
+
+  background: #fcfaf8;
+}
+
+.luck-pillar span {
+  font-size: 10px;
+  color: #958a82;
+}
+
+.luck-pillar strong {
+  font-size: 17px;
+  color: #594438;
+}
+
+.luck-pillar-first {
+  background: #f3eae2;
+  border-color: #d7c1ae;
+}
+
+/* 해석 */
+
+.interpretation-card {
+  padding-bottom: 10px;
+}
+
+.interpretation-section {
+  padding: 20px 0;
+
+  border-top: 1px solid #eee8e3;
+}
+
+.interpretation-section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.interpretation-section h4 {
+  margin: 0 0 9px;
+
+  font-size: 15px;
+  color: #594438;
+}
+
+.interpretation-section p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.85;
+
+  color: #665d57;
+}
+
+/* 오늘의 운세 */
+
+.today-card {
+  overflow: hidden;
+
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+
+  background: #594438;
+  color: white;
+
+  box-shadow: 0 12px 35px rgba(70, 50, 40, 0.15);
+}
+
+.today-header {
+  padding: 30px 26px 25px;
+
+  background: linear-gradient(
+    135deg,
+    #594438 0%,
+    #725747 100%
+  );
+}
+
+.today-header .today-label {
+  color: #d9c1ad;
+}
+
+.today-header h2 {
+  margin: 0;
+
+  font-size: 27px;
+}
+
+.today-header p {
+  margin: 8px 0 0;
+
+  font-size: 13px;
+
+  color: #d8cbc2;
+}
+
+.today-list {
+  padding: 0 26px 20px;
+}
+
+.today-item {
+  padding: 19px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.today-item span {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #e4d1c2;
+}
+
+.today-item p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: #f5efea;
+}
+
+.today-main {
+  padding-top: 22px;
+}
+
+.today-main span {
+  color: #f0c6a5;
+}
+
+/* 결과 주의문 */
+
+.result-disclaimer {
+  margin: 20px 10px 0;
+
+  text-align: center;
+
+  font-size: 11px;
+  line-height: 1.7;
+
+  color: #a09892;
+}
+
+/* 모바일 */
+
+@media (max-width: 600px) {
+  .saju-result {
+    margin-top: 25px;
+  }
+
+  .result-card {
+    padding: 21px 17px;
+    border-radius: 15px;
+  }
+
+  .result-header h2 {
+    font-size: 24px;
+  }
+
+  .pillars {
+    gap: 5px;
+  }
+
+  .pillar {
+    min-height: 105px;
+  }
+
+  .pillar strong {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .pillar-title {
+    margin-bottom: 9px;
+    font-size: 11px;
+  }
+
+  .pillar small {
+    display: none;
+  }
+
+  .info-grid {
+    gap: 7px;
+  }
+
+  .info-item {
+    padding: 13px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .info-item strong {
+    font-size: 13px;
+  }
+
+  .today-header {
+    padding: 25px 20px 22px;
+  }
+
+  .today-header h2 {
+    font-size: 24px;
+  }
+
+  .today-list {
+    padding: 0 20px 15px;
+  }
+}
